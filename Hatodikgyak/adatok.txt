@@ -1,0 +1,4 @@
+Kód;Név;Születési_idõ;Lakcím;Fizetés
+11;Kis Béla;1995.10.11;Miskolc;30000
+12;Nagy Géza;1996.10.12;Debrecen;32000
+13;Valami András;1976.11.11;Budapest;23000
