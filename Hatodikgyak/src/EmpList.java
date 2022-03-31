@@ -16,13 +16,13 @@ public class EmpList extends JDialog {
 
 	
 	public EmpList(JFrame f, EmpTM betm) {
-		super(f, "DolgozÛk list·ja",true);
+		super(f, "Dolgoz√≥k list√°ja",true);
 		etm = betm;
 		
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(null);
 		
-		JButton btnBezar = new JButton("Bez·r");
+		JButton btnBezar = new JButton("Bez√°r");
 		btnBezar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();

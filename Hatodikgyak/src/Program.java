@@ -17,6 +17,7 @@ public class Program extends JFrame {
 	private EmpTM etm;
 	private DbMethods dbm = new DbMethods();
 	private int dbkez = 0;
+	private Checker c = new Checker();
 
 	/**
 	 * Launch the application.
@@ -38,6 +39,7 @@ public class Program extends JFrame {
 	 * Create the frame.
 	 */
 	public Program() {
+		super("AdatkezelÅ‘ program 2022");
 		dbm.Reg();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -64,17 +66,17 @@ public class Program extends JFrame {
 		btnLista.setBounds(0, 11, 116, 23);
 		contentPane.add(btnLista);
 		
-		JButton btnNewButton = new JButton("Új adatsor");
+		JButton btnNewButton = new JButton("Ãšj adatsor");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				NewEmp ne = new NewEmp(dbkez);
+				NewEmp ne = new NewEmp(Program.this,dbkez);
 				ne.setVisible(true);
 			}
 		});
 		btnNewButton.setBounds(0, 41, 116, 23);
 		contentPane.add(btnNewButton);
 		
-		JButton btnTrls = new JButton("Törlés");
+		JButton btnTrls = new JButton("TÃ¶rlÃ©s");
 		btnTrls.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(dbkez == 0) etm = FileManager.CsvReader();
@@ -90,18 +92,23 @@ public class Program extends JFrame {
 		btnTrls.setBounds(0, 75, 116, 23);
 		contentPane.add(btnTrls);
 		
-		JButton btnMdosts = new JButton("Módosítás");
+		JButton btnMdosts = new JButton("MÃ³dosÃ­tÃ¡s");
 		btnMdosts.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				etm = FileManager.CsvReader();
-				EmpMod em = new EmpMod(Program.this,etm);
+				if(dbkez == 0) etm = FileManager.CsvReader();
+				else {
+					dbm.Connect();
+					etm = dbm.ReadAllData();
+					dbm.Disconnect();
+				}
+				EmpMod em = new EmpMod(Program.this,etm, dbkez);
 				em.setVisible(true);
 			}
 		});
 		btnMdosts.setBounds(0, 109, 116, 23);
 		contentPane.add(btnMdosts);
 		
-		JButton btnKilepes = new JButton("Kilépés");
+		JButton btnKilepes = new JButton("KilÃ©pÃ©s");
 		btnKilepes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
@@ -112,14 +119,17 @@ public class Program extends JFrame {
 		btnKilepes.setBounds(335, 227, 89, 23);
 		contentPane.add(btnKilepes);
 		
-		JButton btnProba = new JButton("Proba");
+		JButton btnProba = new JButton("Db connection teszt");
 		btnProba.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				dbm.Connect();
 				dbm.Disconnect();
+				c.SM("Connection teszt lefutott!", 1);
+				
 			}
 		});
-		btnProba.setBounds(286, 54, 89, 23);
+		btnProba.setBounds(215, 54, 168, 23);
 		contentPane.add(btnProba);
 		
 		JCheckBox chckbxDbKezels = new JCheckBox("DB kezel\u00E9s");
@@ -134,7 +144,7 @@ public class Program extends JFrame {
 		
 		
 		
-		Object emptmn[] = {"Jel","Kód","Név","Szülidõ‘","Lakóhely","Fizetés"};
+		Object emptmn[] = {"Jel","KÃ³d","NÃ©v","SzÃ¼lidÃµâ€˜","LakÃ³hely","FizetÃ©s"};
 		etm = new EmpTM(emptmn, 0);
 	}
 }

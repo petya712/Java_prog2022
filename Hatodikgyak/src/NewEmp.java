@@ -1,4 +1,5 @@
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
@@ -19,31 +20,33 @@ public class NewEmp extends JDialog {
 
 	
 	
-	public NewEmp(int dbkez) {
+	public NewEmp(JFrame f,int dbkez) {
+		super(f,"√öj dolgoz√≥k besz√∫r√°sa");
+		
 		setBounds(100, 100, 400, 250);
 		getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("LakÛhely:");
+		JLabel lblNewLabel = new JLabel("Lak√≥hely:");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblNewLabel.setBounds(22, 106, 87, 14);
 		getContentPane().add(lblNewLabel);
 		
-		JLabel lblSzlid = new JLabel("Sz¸lidı:");
+		JLabel lblSzlid = new JLabel("Sz√ºlid√µ:");
 		lblSzlid.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblSzlid.setBounds(22, 81, 87, 14);
 		getContentPane().add(lblSzlid);
 		
-		JLabel lblNv = new JLabel("NÈv:");
+		JLabel lblNv = new JLabel("N√©v:");
 		lblNv.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblNv.setBounds(22, 55, 87, 14);
 		getContentPane().add(lblNv);
 		
-		JLabel lblKd = new JLabel("KÛd:");
+		JLabel lblKd = new JLabel("K√≥d:");
 		lblKd.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblKd.setBounds(22, 30, 87, 14);
 		getContentPane().add(lblKd);
 		
-		JLabel lblFizets = new JLabel("FizetÈs:");
+		JLabel lblFizets = new JLabel("Fizet√©s:");
 		lblFizets.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblFizets.setBounds(22, 131, 87, 14);
 		getContentPane().add(lblFizets);
@@ -73,15 +76,15 @@ public class NewEmp extends JDialog {
 		textfiz.setBounds(99, 131, 111, 20);
 		getContentPane().add(textfiz);
 		
-		JButton btnBeszr = new JButton("Besz˙r");
+		JButton btnBeszr = new JButton("Besz√∫r");
 		btnBeszr.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Checker c = new Checker();
-				if (c.goodInt(textkod, "KÛd"))
-					if (c.filled(textnev, "NÈv"))
-						if (c.goodDate(textszid,"Sz¸letÈsi idı"))
-							if(c.filled(textlak, "LakcÌm"))
-								if(c.goodInt(textfiz,"FizetÈs"))
+				if (c.goodInt(textkod, "K√≥d"))
+					if (c.filled(textnev, "N√©v"))
+						if (c.goodDate(textszid,"Sz√ºlet√©si id√µ"))
+							if(c.filled(textlak, "Lakc√≠m"))
+								if(c.goodInt(textfiz,"Fizet√©s"))
 									if(dbkez == 0){
 										FileManager.Insert(RTF(textkod), RTF(textnev), RTF(textszid), RTF(textlak), RTF(textfiz));
 									}else{
@@ -95,7 +98,7 @@ public class NewEmp extends JDialog {
 		btnBeszr.setBounds(99, 177, 89, 23);
 		getContentPane().add(btnBeszr);
 		
-		JButton btnBezr = new JButton("Bez·r");
+		JButton btnBezr = new JButton("Bez√°r");
 		btnBezr.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();

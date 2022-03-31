@@ -18,13 +18,13 @@ public class EmpDel extends JDialog {
 
 	
 	public EmpDel(JFrame f, EmpTM betm, int dbkez) {
-		super(f, "DolgozÛk tˆrlÈse",true);
+		super(f, "Dolgoz√≥k t√∂rl√©se",true);
 		etm = betm;
 		
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(null);
 		
-		JButton btnBezar = new JButton("Bez·r");
+		JButton btnBezar = new JButton("Bez√°r");
 		btnBezar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -50,15 +50,15 @@ public class EmpDel extends JDialog {
 
 		table.setAutoCreateRowSorter(true);
 		
-		JButton btnAdatsorTrlse = new JButton("Adatsor tˆrlÈse");
+		JButton btnAdatsorTrlse = new JButton("Adatsor t√∂rl√©se");
 		btnAdatsorTrlse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int db = 0, jel =0, x=0;
 				for(x= 0; x < etm.getRowCount();x++)
 					if((Boolean)etm.getValueAt(x, 0)) {db++; jel=x;}
-					if(db==0) c.SM("Nincs kijelˆlve tˆrlendı rekord!", 0);
+					if(db==0) c.SM("Nincs kijel√∂lve t√∂rlend√µ rekord!", 0);
 					
-					if(db>1) c.SM("Tˆbb rekord van kijelˆlve!\nEgyszerre csak egy"+" rekord tˆrˆlhetı!", 0);
+					if(db>1) c.SM("T√∂bb rekord van kijel√∂lve!\nEgyszerre csak egy"+" rekord t√∂r√∂lhet√µ!", 0);
 					
 					if(db==1) {
 						String kod = etm.getValueAt(jel, 1).toString();
@@ -70,7 +70,7 @@ public class EmpDel extends JDialog {
 							dbm.Disconnect();
 						}
 						dispose();
-						c.SM("A rekord tˆrˆlve!", 1);
+						c.SM("A rekord t√∂r√∂lve!", 1);
 					}
 			}
 		});

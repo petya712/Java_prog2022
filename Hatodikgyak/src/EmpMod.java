@@ -20,17 +20,18 @@ public class EmpMod extends JDialog {
 	private JTextField textszid;
 	private JTextField textlak;
 	private JTextField textfiz;
+	private DbMethods dbm = new DbMethods();
 	
 
 	
-	public EmpMod(JFrame f, EmpTM betm) {
-		super(f, "DolgozÛk mÛdosÌt·sa",true);
+	public EmpMod(JFrame f, EmpTM betm, int dbkez) {
+		super(f, "Dolgoz√≥k m√≥dos√≠t√°sa",true);
 		etm = betm;
 		
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(null);
 		
-		JButton btnBezar = new JButton("Bez·r");
+		JButton btnBezar = new JButton("Bez√°r");
 		btnBezar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -56,34 +57,47 @@ public class EmpMod extends JDialog {
 
 		table.setAutoCreateRowSorter(true);
 		
-		JButton btnMod = new JButton("MÛdosÌt·s");
+		JButton btnMod = new JButton("M√≥dos√≠t√°s");
 		btnMod.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int db = 0, jel =0, x=0;
 				for(x= 0; x < etm.getRowCount();x++)
 					if((Boolean)etm.getValueAt(x, 0)) {db++; jel =x;}
-					if(db==0) c.SM("Nincs kijelˆlve mÛdosÌtandÛ rekord!", 0);
+					if(db==0) c.SM("Nincs kijel√∂lve m√≥dos√≠tand√≥ rekord!", 0);
 					
-					if(db>1) c.SM("Tˆbb rekord van kijelˆlve!\nEgyszerre csak egy"+" rekord mÛdosÌthatÛ!", 0);
+					if(db>1) c.SM("T√∂bb rekord van kijel√∂lve!\nEgyszerre csak egy"+" rekord m√≥dos√≠that√≥!", 0);
 					
 					if(db==1) {
 						if (modDataPc() > 0) {
 							boolean ok = true;
-							if (c.filled(textkod)) ok = c.goodInt(textkod, "KÛd");
-							if (ok && c.filled(textfiz)) ok = c.goodInt(textfiz, "FizetÈs");
+							if (c.filled(textkod)) ok = c.goodInt(textkod, "K√≥d");
+							if (ok && c.filled(textfiz)) ok = c.goodInt(textfiz, "Fizet√©s");
 							if (ok) {
+								if(dbkez == 1) {
+									String mkod = etm.getValueAt(jel, 1).toString();
+									dbm.Connect();
+								
+								if (c.filled(textnev)) dbm.Update(mkod, "nev",c.RTF(textnev));
+								if (c.filled(textszid)) dbm.Update(mkod, "szulido",c.RTF(textszid));
+								if (c.filled(textlak)) dbm.Update(mkod, "lakohely",c.RTF(textlak));
+								if (c.filled(textfiz)) dbm.Update(mkod, "fizetes",c.RTF(textfiz));
+								if (c.filled(textkod)) dbm.Update(mkod, "kod", c.RTF(textkod));
+								dbm.Disconnect();
+								}
+								
 								if (c.filled(textkod)) etm.setValueAt(c.stringToInt(c.RTF(textkod)), jel, 1);
 								if (c.filled(textnev)) etm.setValueAt(c.RTF(textnev), jel, 2);
 								if (c.filled(textszid)) etm.setValueAt(c.RTF(textszid), jel, 3);
 								if (c.filled(textlak)) etm.setValueAt(c.RTF(textlak), jel, 4);
 								if (c.filled(textfiz)) etm.setValueAt(c.stringToInt(c.RTF(textfiz)), jel, 5);
-								FileManager.Insert(etm);
-								c.SM("A rekord mÛdosÌtva!", 1);
-								reset(db);
+								
+								if(dbkez == 0) FileManager.Insert(etm);
+								
+								c.SM("A rekord m√≥dos√≠tva!", 1);
 								reset(jel);
 							}
 						} else {
-							c.SM("Nincs kitˆltve egyetlen mÛdosÌtÛ adatmezp sem!", 1);
+							c.SM("Nincs kit√∂ltve egyetlen m√≥dos√≠t√≥ adatmez≈ë sem!", 1);
 						}
 					}
 			}

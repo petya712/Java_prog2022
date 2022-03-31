@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 public class FileManager {
 	
 	public static EmpTM CsvReader(){
-		Object emptmn[] = {"Jel","Kód","Név","Szülidõ‘","Lakóhely","Fizetés"};
+		Object emptmn[] = {"Jel","KÃ³d","NÃ©v","SzÃ¼lidÃµâ€˜","LakÃ³hely","FizetÃ©s"};
 		EmpTM etm = new EmpTM(emptmn, 0);
 		try{
 			BufferedReader in  = new BufferedReader(new FileReader("adatok.txt"));
@@ -33,7 +33,7 @@ public class FileManager {
 			PrintStream out = new PrintStream(new FileOutputStream("adatok.txt",true));
 			out.println(kod+x+nev+x+szid+x+lak+x+fiz);
 			out.close();
-			SM("FM.Insert: Adatok kiírva!", 1);
+			SM("FM.Insert: Adatok kiÃ­rva!", 1);
 			
 			
 		}catch (IOException ioe) {
@@ -45,14 +45,14 @@ public class FileManager {
 	
 	
 	public static void SM(String msg, int tipus) {
-		JOptionPane.showMessageDialog(null, msg,"Program üzenet",tipus);
+		JOptionPane.showMessageDialog(null, msg,"Program Ã¼zenet",tipus);
 	}
 	
 	public static void Insert(EmpTM etm) {
 		String x=";";
 		try {
 			PrintStream out = new PrintStream(new FileOutputStream("adatok.txt"));
-			out.println("Kód;Név;Születési_idõ;Lakcím;Fizetés");
+			out.println("KÃ³d;NÃ©v;SzÃ¼letÃ©si_idÃµ;LakcÃ­m;FizetÃ©s");
 			for(int i = 0; i < etm.getRowCount(); i++) {
 				String kod=etm.getValueAt(i, 1).toString();
 				String nev=etm.getValueAt(i, 2).toString();

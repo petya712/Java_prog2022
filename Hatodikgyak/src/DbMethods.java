@@ -17,18 +17,17 @@ public class DbMethods {
 			Class.forName("org.sqlite.JDBC");
 			SM("Sikeres driver reg!",1);
 		}catch (ClassNotFoundException e){
-			SM("Hibás driver reg!"+e.getMessage(),0);
+			SM("HibÃ¡s driver reg!"+e.getMessage(),0);
 		}
 	}
 	public void SM(String msg, int tipus){
-		JOptionPane.showMessageDialog(null, msg,"Program üzenet",tipus);
+		JOptionPane.showMessageDialog(null, msg,"Program Ã¼zenet",tipus);
 	}
 	
 	public void Connect(){
 		try{
-			String url = "jdbc:sqlite:C:/Users/szabo129/sqlite3/empdb";
+			String url = "jdbc:sqlite:C:/Users/Peti/sqlite3/empdb";
 			conn = DriverManager.getConnection(url);
-			SM("Connection OK!",1);
 		}catch (SQLException e ){
 			SM("JBDC Connect: "+e.getMessage(),0);
 		}
@@ -37,7 +36,6 @@ public class DbMethods {
 	public void Disconnect(){
 		try{
 			conn.close();
-			SM("Disconnection OK!",1);
 		}catch(SQLException e) {
 			SM(e.getMessage(),0);
 			
@@ -45,7 +43,7 @@ public class DbMethods {
 	}
 	
 	public EmpTM ReadAllData(){
-		Object emptmn[] = {"Jel","Kód","Név","Szülidõ‘","Lakóhely","Fizetés"};
+		Object emptmn[] = {"Jel","KÃ³d","NÃ©v","SzÃ¼lidÃµâ€˜","LakÃ³hely","FizetÃ©s"};
 		EmpTM etm = new EmpTM(emptmn,0);
 		String nev = "", szid="",lak="";
 		int kod=0,fiz=0;
@@ -71,7 +69,7 @@ public class DbMethods {
 		try{
 			s = conn.createStatement();
 			s.execute(sqlp);
-			SM("insert OK!",1);
+			SM("Insert OK!",1);
 		}catch (SQLException e){
 			SM("JDBC insert: "+e.getMessage(),0);
 		}
@@ -85,6 +83,16 @@ public class DbMethods {
 			SM("Delete OK!",1);
 		}catch (SQLException e){
 			SM("JDBC Delete: "+e.getMessage(),0);
+		}
+	}
+	
+	public void Update(String kod, String mnev, String madat) {
+		String sqlp = "update emp set "+mnev+"='"+madat+"' where kod="+kod;
+		try {
+			s = conn.createStatement();
+			s.execute(sqlp);
+		}catch (SQLException e) {
+			SM("JDBC Update: "+e.getMessage(),0);
 		}
 	}
 }

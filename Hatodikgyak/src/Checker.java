@@ -16,7 +16,7 @@ public class Checker {
 		String s = RTF(a);
 		if (s.length()> 0 ) return true;
 		else {
-			SM("Hiba: a(z) "+an+" mezı ¸res!", 0);
+			SM("Hiba: a(z) "+an+" mez√µ √ºres!", 0);
 			return false;
 		}
 	}
@@ -28,7 +28,7 @@ public class Checker {
 			Integer.parseInt(s);
 			
 		}catch (NumberFormatException e) {
-			SM("A(z) "+an+" mezıben hib·s a sz·madat!",0);
+			SM("A(z) "+an+" mez√µben hib√°s a sz√°madat!",0);
 			b = false;
 		}
 		return b;
@@ -39,7 +39,7 @@ public class Checker {
 	}
 	
 	public void SM(String msg, int tipus) {
-		JOptionPane.showMessageDialog(null, msg,"Program ¸zenet",tipus);
+		JOptionPane.showMessageDialog(null, msg,"Program √ºzenet",tipus);
 	}
 	
 	public boolean DateFormatChecker(String SDate) {
@@ -55,7 +55,7 @@ public class Checker {
 		boolean b = filled(a,an);
 		if(b && DateFormatChecker(s)) return true;
 		else {
-			SM("A(z) "+an+" mezıben hib·s a d·tum!",0);
+			SM("A(z) "+an+" mez√µben hib√°s a d√°tum!",0);
 			return false;
 		}
 	}
