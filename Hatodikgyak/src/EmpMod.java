@@ -24,13 +24,13 @@ public class EmpMod extends JDialog {
 
 	
 	public EmpMod(JFrame f, EmpTM betm) {
-		super(f, "Dolgoz√≥k m√≥dos√≠t√°sa",true);
+		super(f, "DolgozÛk mÛdosÌt·sa",true);
 		etm = betm;
 		
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(null);
 		
-		JButton btnBezar = new JButton("Bez\u00E1r");
+		JButton btnBezar = new JButton("Bez·r");
 		btnBezar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -56,21 +56,21 @@ public class EmpMod extends JDialog {
 
 		table.setAutoCreateRowSorter(true);
 		
-		JButton btnMod = new JButton("M√≥dos√≠t√°s");
+		JButton btnMod = new JButton("MÛdosÌt·s");
 		btnMod.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int db = 0, jel =0, x=0;
 				for(x= 0; x < etm.getRowCount();x++)
 					if((Boolean)etm.getValueAt(x, 0)) {db++; jel =x;}
-					if(db==0) c.SM("Nincs kijel√∂lve m√≥dos√≠tand√≥ rekord!", 0);
+					if(db==0) c.SM("Nincs kijelˆlve mÛdosÌtandÛ rekord!", 0);
 					
-					if(db>1) c.SM("T√∂bb rekord van kijel√∂lve!\nEgyszerre csak egy"+" rekord m√≥dos√≠that√≥!", 0);
+					if(db>1) c.SM("Tˆbb rekord van kijelˆlve!\nEgyszerre csak egy"+" rekord mÛdosÌthatÛ!", 0);
 					
 					if(db==1) {
 						if (modDataPc() > 0) {
 							boolean ok = true;
-							if (c.filled(textkod)) ok = c.goodInt(textkod, "K√≥d");
-							if (ok && c.filled(textfiz)) ok = c.goodInt(textfiz, "Fizet√©s");
+							if (c.filled(textkod)) ok = c.goodInt(textkod, "KÛd");
+							if (ok && c.filled(textfiz)) ok = c.goodInt(textfiz, "FizetÈs");
 							if (ok) {
 								if (c.filled(textkod)) etm.setValueAt(c.stringToInt(c.RTF(textkod)), jel, 1);
 								if (c.filled(textnev)) etm.setValueAt(c.RTF(textnev), jel, 2);
@@ -78,12 +78,12 @@ public class EmpMod extends JDialog {
 								if (c.filled(textlak)) etm.setValueAt(c.RTF(textlak), jel, 4);
 								if (c.filled(textfiz)) etm.setValueAt(c.stringToInt(c.RTF(textfiz)), jel, 5);
 								FileManager.Insert(etm);
-								c.SM("A rekord m√≥dos√≠tva!", 1);
+								c.SM("A rekord mÛdosÌtva!", 1);
 								reset(db);
 								reset(jel);
 							}
 						} else {
-							c.SM("Nincs kit√∂ltve egyetlen m√≥dos√≠t√≥ adatmez≈ë sem!", 1);
+							c.SM("Nincs kitˆltve egyetlen mÛdosÌtÛ adatmezp sem!", 1);
 						}
 					}
 			}

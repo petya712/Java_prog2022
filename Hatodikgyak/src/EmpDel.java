@@ -14,17 +14,17 @@ public class EmpDel extends JDialog {
 	private JTable table;
 	private EmpTM etm;
 	private Checker c = new Checker();
-	//private DbMethods dbm = new DbMethods();
+	private DbMethods dbm = new DbMethods();
 
 	
-	public EmpDel(JFrame f, EmpTM betm) {
-		super(f, "DolgozÃ³k tÃ¶rlÃ©se",true);
+	public EmpDel(JFrame f, EmpTM betm, int dbkez) {
+		super(f, "Dolgozók törlése",true);
 		etm = betm;
 		
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(null);
 		
-		JButton btnBezar = new JButton("Bez\u00E1r");
+		JButton btnBezar = new JButton("Bezár");
 		btnBezar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -50,21 +50,27 @@ public class EmpDel extends JDialog {
 
 		table.setAutoCreateRowSorter(true);
 		
-		JButton btnAdatsorTrlse = new JButton("Adatsor tÃ¶rlÃ©se");
+		JButton btnAdatsorTrlse = new JButton("Adatsor törlése");
 		btnAdatsorTrlse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int db = 0, jel =0, x=0;
 				for(x= 0; x < etm.getRowCount();x++)
 					if((Boolean)etm.getValueAt(x, 0)) {db++; jel=x;}
-					if(db==0) c.SM("Nincs kijelÃ¶lve tÃ¶rlendÅ‘ rekord!", 0);
+					if(db==0) c.SM("Nincs kijelölve törlendõ rekord!", 0);
 					
-					if(db>1) c.SM("TÃ¶bb rekord van kijelÃ¶lve!\nEgyszerre csak egy"+" rekord tÃ¶rÃ¶lhetÅ‘!", 0);
+					if(db>1) c.SM("Több rekord van kijelölve!\nEgyszerre csak egy"+" rekord törölhetõ!", 0);
 					
 					if(db==1) {
+						String kod = etm.getValueAt(jel, 1).toString();
 						etm.removeRow(jel);
-						FileManager.Insert(etm);
+						if(dbkez == 0)FileManager.Insert(etm);
+						else{
+							dbm.Connect();
+							dbm.DeleteData(kod);
+							dbm.Disconnect();
+						}
 						dispose();
-						c.SM("A rekord tÃ¶rÃ¶lve!", 1);
+						c.SM("A rekord törölve!", 1);
 					}
 			}
 		});

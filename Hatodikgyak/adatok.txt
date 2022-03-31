@@ -1,14 +1,14 @@
-K√≥d;N√©v;Sz√ºlet√©si_id≈ë;Lakc√≠m;Fizet√©s
-11;Szab√≥ P√©ter;1997.07.08;Miskolc;400000
-12;√Åd√°m B√°ty√°m;2000.02.20;Budapest;500000
-15;GIGA CSIGA;1870.10.21;V√°s√°rosnam√©ny;134
-13;Nagy Andr√°s;1971.01.11;Bakosbikbak;10
+KÛd;NÈv;Sz¸letÈsi_idı;LakcÌm;FizetÈs
+11;SzabÛ PÈter;1997.07.08;Miskolc;400000
+12;¡d·m B·ty·m;2000.02.20;Budapest;500000
+15;GIGA CSIGA;1870.10.21;V·s·rosnamÈny;134
+13;Nagy Andr·s;1971.01.11;Bakosbikbak;10
 14;Varga Barka;1920.12.20;Kukkutyin;100
 16;Csiga BIGA;3000.11.01;Mars;12233344
 17;Bringa Kinga;2011.10.03;Miskolci Egyetem;123
 23;Kalap Sapi;2002.11.05;Miskolci Egyetem;11
 18;Punc Imre;2030.03.05;Miskolci Egyetem;211234
 19;Willy Wonka;1944.02.13;Wonderlands;4000000
-20;Gill Bates;1956.03.23;Szilikonv√∂lgy;10000000
+20;Gill Bates;1956.03.23;Szilikonvˆlgy;10000000
 21;Harry Potter;2122.07.04;Anglia;1337
-22;Dolgoz√≥ √âvi;1337.12.14;Office;1
+22;DolgozÛ …vi;1337.12.14;Office;1
