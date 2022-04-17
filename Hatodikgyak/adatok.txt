@@ -1,10 +1,9 @@
-Kód;Név;Születési_idő;Lakcím;Fizetés
+Kód;Név;Születési_idõ;Lakcím;Fizetés
 11;Szabó Péter;1997.07.08;Miskolc;400000
 12;Ádám Bátyám;2000.02.20;Budapest;500000
-15;GIGA CSIGA;1870.10.21;Vásárosnamény;134
+15;Giga Csiga;1870.10.21;Vásárosnamény;1340
 13;Nagy András;1971.01.11;Bakosbikbak;10
 14;Varga Barka;1920.12.20;Kukkutyin;100
-16;Csiga BIGA;3000.11.01;Mars;12233344
 17;Bringa Kinga;2011.10.03;Miskolci Egyetem;123
 23;Kalap Sapi;2002.11.05;Miskolci Egyetem;11
 18;Punc Imre;2030.03.05;Miskolci Egyetem;211234

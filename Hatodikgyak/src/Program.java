@@ -142,6 +142,23 @@ public class Program extends JFrame {
 		chckbxDbKezels.setBounds(286, 109, 97, 23);
 		contentPane.add(chckbxDbKezels);
 		
+		JButton btnStat = new JButton("Statisztika");
+		btnStat.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (dbkez == 0) etm = FileManager.StatReader("","");
+				else{
+					dbm.Connect();
+					etm = dbm.ReadAllData();
+					dbm.Disconnect();
+				}
+				EmpStat el = new EmpStat(Program.this, etm);
+				el.setVisible(true);
+				
+			}
+		});
+		btnStat.setBounds(0, 143, 116, 23);
+		contentPane.add(btnStat);
+		
 		
 		
 		Object emptmn[] = {"Jel","Kód","Név","Szülidõ‘","Lakóhely","Fizetés"};

@@ -4,6 +4,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintStream;
 
+
 import javax.swing.JOptionPane;
 
 public class FileManager {
@@ -23,6 +24,48 @@ public class FileManager {
 			in.close();
 		}catch(IOException ioe){
 			System.out.println("CsvReader: "+ioe.getMessage());
+		}
+		return etm;
+	}
+	
+	public static EmpTM StatReader(String kod, String nev){
+		Object emptmn[] = {"Jel","Kód","Név","Szülidõ‘","Lakóhely","Fizetés"};
+		EmpTM etm = new EmpTM(emptmn, 0);
+		try{
+			BufferedReader in  = new BufferedReader(new FileReader("adatok.txt"));
+			in.mark(1500);
+			String s=in.readLine();
+			s=in.readLine();
+			
+			while(s!=null){
+				String[] st = s.split(";");
+				etm.addRow(new Object[]{false,st[0],st[1],st[2],st[3],st[4] });
+				s=in.readLine();
+			}
+			
+			System.out.println("ittvok");//segítő
+			in.reset();
+			s=in.readLine();
+			
+			System.out.println("Kód: "+kod); //segítő
+			System.out.println("Név: "+nev);//segítő
+			
+			for(int i = 0;etm.getRowCount()>i;i++) {
+				if(s!=null) {
+					System.out.println("FORba vagyok"); //segítő
+					s=in.readLine();
+					System.out.println(s); //segítő
+						if(s!=null && (( kod.contains(etm.getValueAt(i, 1).toString())) || (nev.contains(etm.getValueAt(i, 2).toString())))){
+							System.out.println("\nMEGTALÁLTAM! "+s); //segítő
+							String[] st = s.split(";");
+							etm.addRow(new Object[]{false,st[0],st[1],st[2],st[3],st[4] });
+							System.out.println("HOZZÁADVA"); //segítő
+						}
+				}
+			}
+			in.close();
+		}catch(IOException ioe){
+			SM("FM.StatReader: "+ioe.getMessage(),0);
 		}
 		return etm;
 	}
