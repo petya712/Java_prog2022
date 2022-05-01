@@ -1,7 +1,7 @@
 Kód;Név;Felfedezési_idő;Felfedező_neve;Távolsága_Földtől
 1;Merkúr;1800.07.08;Emberiség;46001272
 2;Vénusz;1700.01.01;Emberiség;107476002
-3;Föld;1.01.01;Emberiség;0
+3;Earth;1000.01.02;Emberiség;0
 4;Mars;1700.01.11;Emberiség;206644545
 5;Jupiter;1700.12.20;Emberiség;740742598
 6;Szaturnusz;1860.10.03;Emberiség;1349467375
@@ -20,3 +20,4 @@ Kód;Név;Felfedezési_idő;Felfedező_neve;Távolsága_Földtől
 19;6-Hebe;1847.07.01;Karl Ludwig Hencke;1157483500
 20;7-Iris;1847.09.13;John Russell Hind;2147483400
 21;Kepler-186f;2014.05.17;Kepler űrtávcső;2147483500
+33;Majmok Bolygója;2000.10.10;Valaki;1000

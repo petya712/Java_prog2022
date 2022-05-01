@@ -57,15 +57,15 @@ public class FileManager {
 					s=in.readLine();
 					System.out.println("\n"+s); //segítő
 					String[] st = s.split(";");
-					
+					//Van egyező kód ,de nincs név megadva
 					if(s!=null && (!kod.equals("")) && (nev.equals("")) && st[0].matches(kod)) {
 						System.out.println("\nMEGTALÁLTAM! Név=null "+s); //segítő
 						ptm.addRow(new Object[]{false,st[0],st[1],st[2],st[3],st[4] });
-						
+						//Van ilyet tartalmazó név ,de nincs kód megadva
 					}else if(s!=null && (!nev.equals("")) && (kod.equals("")) && st[1].contains(nev)) {
 						System.out.println("\nMEGTALÁLTAM! Kód=null "+s); //segítő
 						ptm.addRow(new Object[]{false,st[0],st[1],st[2],st[3],st[4] });
-						
+						//Van kitöltött egyező kód és ilyet tartalmazó név is
 					}else if(s!=null && (!nev.equals("")) && (!kod.equals("")) &&(( st[0].matches(kod)) || (st[1].contains(nev)))){
 							System.out.println("\nMEGTALÁLTAM! Egyiksem=null "+s); //segítő
 							ptm.addRow(new Object[]{false,st[0],st[1],st[2],st[3],st[4] });
@@ -108,11 +108,11 @@ public class FileManager {
 			PrintStream out = new PrintStream(new FileOutputStream("adatok.txt",true));
 			out.println(kod+x+nev+x+fid+x+fnev+x+tav);
 			out.close();
-			SM("FM.Insert: Adatok kiírva!", 1);
+			SM("Adatok kiírva!", 1);
 			
 			
 		}catch (IOException ioe) {
-			SM("FM.Insert: "+ioe.getMessage(),0);
+			SM("Insert hiba: "+ioe.getMessage(),0);
 		}
 		
 	}
@@ -138,7 +138,7 @@ public class FileManager {
 			}
 			out.close();
 		}catch (IOException ioe) {
-			SM("FM.Insert: "+ioe.getMessage(),0);
+			SM("Insert hiba: "+ioe.getMessage(),0);
 		}
 	}
 

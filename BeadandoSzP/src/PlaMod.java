@@ -31,7 +31,7 @@ public class PlaMod extends JDialog {
 		getContentPane().setBackground(new Color(153, 255, 255));
 		ptm = bptm;
 		
-		setBounds(100, 100, 709, 391);
+		setBounds(100, 100, 709, 592);
 		getContentPane().setLayout(null);
 		
 		JButton btnBezar = new JButton("Bezár");
@@ -40,7 +40,7 @@ public class PlaMod extends JDialog {
 				dispose();
 			}
 		});
-		btnBezar.setBounds(594, 318, 89, 23);
+		btnBezar.setBounds(594, 509, 89, 23);
 		getContentPane().add(btnBezar);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -74,7 +74,8 @@ public class PlaMod extends JDialog {
 						if (modDataPc() > 0) {
 							boolean ok = true;
 							if (c.filled(textkod)) ok = c.goodInt(textkod, "Kód");
-							if (ok && c.filled(texttav)) ok = c.goodInt(texttav, "Fizetés");
+							if (ok && c.filled(texttav)) ok = c.goodInt(texttav, "Távolsága_Földtől");
+							if (ok && c.filled(textfid)) ok = c.goodDate(textfid, "Felfedezési_idő");
 							if (ok) {
 								
 								if (c.filled(textkod)) ptm.setValueAt(c.stringToInt(c.RTF(textkod)), jel, 1);
@@ -94,7 +95,7 @@ public class PlaMod extends JDialog {
 					}
 			}
 		});
-		btnMod.setBounds(10, 318, 150, 23);
+		btnMod.setBounds(278, 509, 150, 23);
 		getContentPane().add(btnMod);
 		
 		textkod = new JTextField();
@@ -103,22 +104,22 @@ public class PlaMod extends JDialog {
 		textkod.setColumns(10);
 		
 		textnev = new JTextField();
-		textnev.setBounds(51, 287, 89, 20);
+		textnev.setBounds(10, 342, 89, 20);
 		getContentPane().add(textnev);
 		textnev.setColumns(10);
 		
 		textfid = new JTextField();
-		textfid.setBounds(150, 287, 119, 20);
+		textfid.setBounds(10, 393, 119, 20);
 		getContentPane().add(textfid);
 		textfid.setColumns(10);
 		
 		textfnev = new JTextField();
-		textfnev.setBounds(279, 287, 105, 20);
+		textfnev.setBounds(10, 449, 105, 20);
 		getContentPane().add(textfnev);
 		textfnev.setColumns(10);
 		
 		texttav = new JTextField();
-		texttav.setBounds(394, 287, 146, 20);
+		texttav.setBounds(10, 510, 146, 20);
 		getContentPane().add(texttav);
 		texttav.setColumns(10);
 		
@@ -129,22 +130,22 @@ public class PlaMod extends JDialog {
 		
 		JLabel lblNev = new JLabel("Név");
 		lblNev.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblNev.setBounds(51, 262, 46, 14);
+		lblNev.setBounds(10, 322, 46, 14);
 		getContentPane().add(lblNev);
 		
 		JLabel lblFlfdzIdo = new JLabel("Felfedezés dátuma");
 		lblFlfdzIdo.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblFlfdzIdo.setBounds(150, 262, 122, 14);
+		lblFlfdzIdo.setBounds(10, 373, 122, 14);
 		getContentPane().add(lblFlfdzIdo);
 		
 		JLabel lblFlfdzNev = new JLabel("Felfedező neve");
 		lblFlfdzNev.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblFlfdzNev.setBounds(279, 262, 86, 14);
+		lblFlfdzNev.setBounds(10, 424, 86, 14);
 		getContentPane().add(lblFlfdzNev);
 		
 		JLabel lblTav = new JLabel("Távolsága Földünktől (km)");
 		lblTav.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblTav.setBounds(394, 262, 166, 14);
+		lblTav.setBounds(10, 485, 166, 14);
 		getContentPane().add(lblTav);
 		
 		JLabel lblInstruction = new JLabel("Jelöljön ki egy módosítani kívánt csillagászati adatot, majd töltse ki a mezőket!");
