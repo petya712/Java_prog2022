@@ -1,0 +1,22 @@
+Kód;Név;Felfedezési_idő;Felfedező_neve;Távolsága_Földtől
+1;Merkúr;1800.07.08;Emberiség;46001272
+2;Vénusz;1700.01.01;Emberiség;107476002
+3;Föld;1.01.01;Emberiség;0
+4;Mars;1700.01.11;Emberiség;206644545
+5;Jupiter;1700.12.20;Emberiség;740742598
+6;Szaturnusz;1860.10.03;Emberiség;1349467375
+7;Uránusz;1781.03.13;Emberiség;2147384444
+8;Neptunusz;1846.09.23;Urbain Le Verrier;2036584500
+9;Ceres;1801.01.01;Guiseppe Piazzi;381419582
+10;Pluto;1930.02.18;Clyde W Tombaugh;1598548500
+11;TenZero;2022.01.03;Jacob Williams;10435363
+12;Eris;2005.01.05;Michael Brown;2147473522
+13;Makemake;2005.03.31;Michael Brown;2146383500
+14;Haumea;2004.12.28;Michael Brown;2147480000
+15;2-Pallas;1802.03.28;Heinrich Wilhelm Olbers;1947483500
+16;3-Juno;1804.09.01;Karl Ludwig Hardling;1747483500
+17;4-Vesta;1807.03.29;Heinrich Wilhelm Olbers;199748350
+18;5-Astraea;1845.12.08;Karl Ludwig Hencke;2047483500
+19;6-Hebe;1847.07.01;Karl Ludwig Hencke;1157483500
+20;7-Iris;1847.09.13;John Russell Hind;2147483400
+21;Kepler-186f;2014.05.17;Kepler űrtávcső;2147483500
